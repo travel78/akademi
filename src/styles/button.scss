@@ -1,0 +1,59 @@
+.btn, .icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &:active {
+    scale: 98%;
+  }
+
+  &-flat {
+    background-color: rgba(77, 68, 181, 0.1);
+
+    &[disabled] {
+      color: theme('colors.custom.gray2');
+    }
+  }
+
+  &-stroked {
+    border: 2px solid theme('colors.custom.purple');
+
+    &[disabled] {
+      color: theme('colors.custom.gray2');
+      border-color: theme('colors.custom.gray2');
+    }
+  }
+
+  &-filled {
+    color: theme('colors.custom.white');
+    background-color: theme('colors.custom.purple');
+
+    &[disabled] {
+      background-color: theme('colors.custom.gray2');
+    }
+  }
+}
+
+.icon-btn {
+  padding: 0.5em;
+  border-radius: 5em;
+  aspect-ratio : 1 / 1;
+
+  &-white {
+    color: theme('colors.custom.gray3');
+    background-color: theme('colors.custom.white');
+
+    &[disabled] {
+      color: theme('colors.custom.gray2');
+    }
+  }
+}
+
+.btn {
+  height: theme('spacing.15');
+  padding-inline: theme('spacing.6');
+  border-radius: theme('spacing.15');
+  gap: theme('spacing.3');
+}
+

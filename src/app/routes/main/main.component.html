@@ -1,0 +1,22 @@
+<div class="flex flex-col h-full bg-custom-purple sm:pl-11 sm:w-80 min-w-max">
+  <a routerLink="/" class="flex justify-center sm:justify-start gap-x-4 text-[2rem]  items-center my-6 sm:mt-13 sm:mb-11">
+    <img ngSrc="logo.png" priority alt="logo" height="54" width="48">
+    <span class="text-custom-gray1 font-bold hidden sm:block">Akademi</span>
+  </a>
+  <nav class="grow scrollbar-thin scrollbar-thumb-custom-gray3 scrollbar-track-custom-purple overflow-y-auto pb-13">
+    <ul class="flex flex-col gap-2">
+      @for (link of links; track link.url) {
+        <li class="flex h-18">
+          <a class="px-6  flex gap-5 grow items-center text-medium-1 text-custom-gray2 rounded-bl-full rounded-tl-full" [routerLink]="link.url"
+             routerLinkActive="bg-custom-background text-custom-purple">
+            <app-svg-icon [name]="link.iconName"></app-svg-icon>
+            <span class="hidden sm:block" >{{ link.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>
+<div class="grow overflow-auto px-6 lg:px-13">
+  <router-outlet/>
+</div>

@@ -1,0 +1,15 @@
+@for (page of pages(); track page) {
+  @let isIcon = page === Paging.prev || page === Paging.next ;
+  @let classStyle = {
+    'icon-btn-white': isIcon,
+    'icon-btn-filled': !isIcon && activePage() === page,
+    'icon-btn-stroked': !isIcon && activePage() !== page
+  } ;
+  <button class="w-13 icon-btn " [class]="classStyle" (click)="onGoToPage(page)">
+    @if (isIcon) {
+      <app-svg-icon name="dots"/>
+    } @else {
+      <span class="overflow-hidden text-ellipsis"> {{ page }}</span>
+    }
+  </button>
+}

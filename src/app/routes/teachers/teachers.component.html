@@ -1,0 +1,47 @@
+<app-header class="mt-13">
+</app-header>
+<div class="flex gap-6 flex-wrap">
+  <app-search class="mr-auto w-96" (search)="onSearch($event)"></app-search>
+  <button class="btn btn-stroked">
+    Newest
+    <app-svg-icon name="dropdown"></app-svg-icon>
+  </button>
+  <a routerLink="new" class="btn btn-filled">
+    <app-svg-icon name="plus"></app-svg-icon>
+    New teacher
+  </a>
+</div>
+@let res = teachers$ | async ;
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+  @for (teacher of res?.data; track teacher.id) {
+    <ng-container *ngTemplateOutlet="teacherItem; context:{teacher}"></ng-container>
+  }
+</div>
+<app-paginator class="mb-13 self-end" [perPage]="10" [total]="total()" [page]="page()" (pageChange)="onPageChange($event)">
+  {{ res?.metadata }}
+</app-paginator>
+
+<ng-template #teacherItem let-teacher="teacher">
+  <div class="flex flex-col min-w-56 items-center p-8 relative bg-custom-white rounded-xl">
+    <button class="icon-btn icon-btn-white absolute top-5 right-5">
+      <app-svg-icon name="dots"></app-svg-icon>
+    </button>
+    <div class="size-30 mb-6 bg-custom-gray2 relative rounded-full overflow-hidden">
+      @if (teacher.photoUrl) {
+        <img class="object-cover object-center"
+             [ngSrc]="teacher.photoUrl" alt="photo" loading="lazy" fill>
+      }
+    </div>
+    <h4 class="mb-2 text-center">{{ teacher.firstName }} {{ teacher.lastName }}</h4>
+    <div class=" mb-8 text-regular-1 text-custom-gray3">{{ teacher.degree }}</div>
+    <div class="flex gap-x-4">
+      <a [href]="'tel:' + teacher.phone" class="icon-btn icon-btn-filled">
+        <app-svg-icon name="call"></app-svg-icon>
+      </a>
+      <a [href]="'email:' + teacher.email" class="icon-btn icon-btn-filled">
+        <app-svg-icon name="email"></app-svg-icon>
+      </a>
+
+    </div>
+  </div>
+</ng-template>

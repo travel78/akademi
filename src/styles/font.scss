@@ -1,0 +1,49 @@
+.text-semi-bold-1 {
+  @apply text-lg font-semibold
+}
+
+.text-semi-bold-2 {
+  @apply text-sm font-semibold
+}
+
+.text-medium-1 {
+  @apply text-lg font-medium
+}
+
+.text-medium-2 {
+  @apply text-sm font-medium
+}
+
+.text-regular-1 {
+  @apply text-lg font-normal
+}
+
+.text-regular-2 {
+  @apply text-sm font-normal
+}
+
+h1, .h1 {
+  @apply text-5xl font-bold
+}
+
+h2, .h2 {
+  @apply text-4xl font-bold
+}
+
+h3, .h3 {
+  @apply text-3xl font-bold
+}
+
+h4, .h4 {
+  @apply text-2xl font-bold
+}
+
+h5, .h5 {
+  @apply text-lg font-bold
+}
+
+h6, .h6 {
+  @apply text-sm font-bold
+}
+
+

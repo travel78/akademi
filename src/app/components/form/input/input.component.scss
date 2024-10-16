@@ -1,0 +1,35 @@
+:host {
+  label {
+    &.required {
+      &:after {
+        content: '*';
+        padding-left: 0.25em;
+      }
+    }
+  }
+
+  input {
+    @apply rounded-md
+  }
+
+  input:focus-visible {
+    @apply outline-inherit
+  }
+
+  input:disabled {
+    @apply bg-custom-gray1
+  }
+
+  &.ng-touched {
+    &.ng-invalid {
+      input {
+        @apply border-custom-red
+      }
+
+      input:focus-visible {
+        @apply outline-custom-red
+      }
+    }
+  }
+}
+

@@ -1,0 +1,10 @@
+<label class="text-semi-bold-1 capitalize" [class.required]="isRequired" (click)="input.focus()">{{label()}}</label>
+<textarea #input class="text-regular-1 p-3.5 pb-3 border border-custom-gray2" [(ngModel)]="value"
+          (blur)="onTouched()" [disabled]="disabled"></textarea>
+<div class="flex subscript text-xs min-h-8">
+  @if(control.touched && control.errors){
+    <span class="text-custom-red">{{control.errors | formErrorMessage:errorMessages()}}</span>
+  } @else {
+    <ng-content select="app-hint"/>
+  }
+</div>

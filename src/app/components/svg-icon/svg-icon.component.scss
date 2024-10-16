@@ -1,0 +1,12 @@
+:host {
+  $width-height: 1.5em;
+  width: $width-height;
+  height: $width-height;
+  background-color: currentColor;
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+}
+
+
+

@@ -1,0 +1,30 @@
+<app-header class="mt-13 mb-13"></app-header>
+<form [formGroup]="form" class="flex flex-col gap-10 mb-10">
+  <app-card title="personal details">
+    <div class="grid grid-cols-2 gap-x-10">
+      <app-input formControlName="firstName" label="first name">
+        <app-hint>Hint for first name</app-hint>
+      </app-input>
+      <app-input formControlName="lastName" label="last name"></app-input>
+      <app-input formControlName="email" label="email" type="email"></app-input>
+      <app-input formControlName="phone" label="phone" type="tel"></app-input>
+      <app-textarea formControlName="address" label="address"></app-textarea>
+      <app-textarea formControlName="address" label="address"></app-textarea>
+      <app-input formControlName="birthDate" label="date of birth" type="date"></app-input>
+      <app-input formControlName="birthPlace" label="place of birth"></app-input>
+    </div>
+  </app-card>
+
+  <app-card title="education">
+    <div class="grid grid-cols-2 gap-x-10">
+      <app-input formControlName="university" label="university"></app-input>
+      <app-input formControlName="degree" label="degree"></app-input>
+      <app-input formControlName="city" label="city"></app-input>
+    </div>
+  </app-card>
+  <div class="flex justify-end">
+    <button class="btn btn-stroked mr-6">Save as Draft</button>
+    <button class="btn btn-filled" (click)="onSubmit()" >Submit</button>
+  </div>
+</form>
+
