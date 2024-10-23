@@ -5,3 +5,5 @@ export * from './user-menu';
 export * from './search';
 export * from './form';
 export * from './paginator';
+export * from './modal';
+export * from './delete';

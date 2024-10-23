@@ -2,7 +2,7 @@
 </app-header>
 <div class="flex gap-6 flex-wrap">
   <app-search class="mr-auto w-96" (search)="onSearch($event)"></app-search>
-  <button class="btn btn-stroked">
+  <button class="btn btn-stroked" (click)="onSort()">
     Newest
     <app-svg-icon name="dropdown"></app-svg-icon>
   </button>
@@ -44,4 +44,9 @@
 
     </div>
   </div>
+</ng-template>
+
+<ng-template #content>
+  <app-delete></app-delete>
+  <div>Template content</div>
 </ng-template>

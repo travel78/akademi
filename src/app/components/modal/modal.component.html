@@ -1,0 +1,8 @@
+<div class="absolute inset-0 bg-black opacity-30" (click)="onClose()"></div>
+<div class="bg-custom-white modal-container" [style.width]="width()">
+  @let component = cmp() ;
+  @if (component) {
+    <ng-template [ngComponentOutlet]="component"></ng-template>
+  }
+  <ng-content></ng-content>
+</div>

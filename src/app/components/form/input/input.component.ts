@@ -29,7 +29,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   readonly destroy: DestroyRef = inject(DestroyRef);
   readonly type = input<HtmlInputType>('text');
   readonly label = input<string>();
-  readonly errorMessages = input<Record<string, string>>();
+  readonly errorMessages = input<Record<string, string>>({});
   readonly value = signal<string | undefined>('');
   private _onChange!: (value: string | undefined) => void;
   private _onTouched!: () => void;

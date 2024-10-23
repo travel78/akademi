@@ -29,7 +29,7 @@ export class TextareaComponent implements ControlValueAccessor, OnInit {
   readonly destroy: DestroyRef = inject(DestroyRef);
   readonly label = input<string>();
   readonly value = model<string | undefined>();
-  readonly errorMessages = input<Record<string, string>>();
+  readonly errorMessages = input<Record<string, string>>({});
   private _onChange!: (value: string | undefined) => void;
   private _onTouched!: () => void;
   disabled: boolean = false;

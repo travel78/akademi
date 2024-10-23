@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, effect, inject, signal, Signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal, TemplateRef, viewChild} from '@angular/core';
 import {
+  DeleteComponent,
   HeaderComponent,
   PaginatorComponent,
   SearchComponent,
@@ -7,7 +8,7 @@ import {
   UserMenuComponent
 } from '@app/components';
 import {RouterLink} from '@angular/router';
-import {TeacherService} from '@app/services';
+import {ModalService, TeacherService} from '@app/services';
 import {AsyncPipe, NgOptimizedImage, NgTemplateOutlet} from '@angular/common';
 
 @Component({
@@ -22,7 +23,8 @@ import {AsyncPipe, NgOptimizedImage, NgTemplateOutlet} from '@angular/common';
     NgTemplateOutlet,
     NgOptimizedImage,
     SearchComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DeleteComponent
   ],
   templateUrl: './teachers.component.html',
   styleUrl: './teachers.component.scss',
@@ -31,17 +33,14 @@ import {AsyncPipe, NgOptimizedImage, NgTemplateOutlet} from '@angular/common';
 })
 export class TeachersComponent {
   readonly teacherSer = inject(TeacherService);
+  readonly modalSer = inject(ModalService);
   teachers$ = this.teacherSer.getMany();
-  total = signal(30);
+  total = signal(240);
   page = signal(2);
 
+  content = viewChild<TemplateRef<unknown>>('content');
+
   constructor() {
-    setTimeout(()=>{
-      this.total.set(50);
-    },2000)
-    setTimeout(()=>{
-      this.total.set(240);
-    },4000)
   }
 
   onSearch(event: string) {
@@ -50,6 +49,14 @@ export class TeachersComponent {
 
   onPageChange(page: number) {
     this.page.set(page);
-    console.log('change ', page);
+  }
+
+  onSort() {
+    // this.modalSer.open(this?.content());
+    this.modalSer.open(DeleteComponent, {width: '400px'}).subscribe(
+      (res)=>{
+        console.log(res);
+      }
+    );
   }
 }
